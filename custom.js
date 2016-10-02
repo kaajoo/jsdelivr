@@ -163,6 +163,39 @@ $('#menu-icon').on( "click", function(e) {
      offset: 400 
  });
 
+ var win = $(window),
+      foo = $('#typer');
+      foo.typer(['<h2><span class=yo>background:</span> <span class=xo>UI/UX Designer / Web developer </span>; <span class="blinking-cursor">&nbsp;|</span> </h2>','<h2><span class=yo>content:</span> <span class=xo>"My online Visual Resume and Design Portfolio"</span>; <span class="blinking-cursor">&nbsp;|</span></h2>']);           
+            win.resize(function(){
+                var fontSize = Math.max(Math.min(win.width() / (1 * 10), parseFloat(Number.POSITIVE_INFINITY)), parseFloat(Number.POSITIVE_INFINITY));
+                foo.css({
+                    fontSize: fontSize * .3 + 'px'
+            });
+  }).resize();
+
+$('.skill').appear(function() {
+     $( ".bar" ).each( function() {
+        var $bar = $( this ),
+       $pct = $bar.find( ".pct" ),
+       data = $bar.data( "bar" );
+      setTimeout( function() {
+         $bar
+         .css( "background-color", data.color )
+         .prop( "title", data.width )
+         .animate({
+         "width": $pct.html()
+       }, 3000, function() {
+      $pct.css({
+       "color": data.color,
+       "opacity": 1
+     });
+     });
+     }, data.delay || 0 );   
+   });
+ }, {
+  offset: 400
+});
+
 
 
 
